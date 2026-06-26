@@ -1,3 +1,8 @@
+// ===============================
+// Birthday Surprise Script
+// ===============================
+
+// List your photos here
 const photos = [
     "images/photo1.jpeg",
     "images/photo2.jpeg",
@@ -5,42 +10,89 @@ const photos = [
     "images/photo4.jpeg"
 ];
 
-let current = 0;
+// Shuffle photos randomly
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
-function openGift(){
+shuffle(photos);
 
-    document.getElementById("giftBox").src="images/gift-open.png";
+let currentPhoto = 0;
 
-    setTimeout(()=>{
+// ===============================
+// Open Gift
+// ===============================
 
-        document.getElementById("giftSection").style.display="none";
+function openGift() {
 
-        document.getElementById("surprise").style.display="block";
+    // Change closed gift to open gift
+    document.getElementById("giftBox").src = "images/gift-open.png";
 
-        slideShow();
+    // Wait 1 second
+    setTimeout(() => {
 
-    },1000);
+        document.getElementById("giftSection").style.display = "none";
+        document.getElementById("surprise").style.display = "block";
+
+        // Show first random photo
+        document.getElementById("photo").src = photos[currentPhoto];
+
+    }, 1000);
 
 }
 
-function slideShow(){
+// ===============================
+// Next Memory Button
+// ===============================
 
-    const photo=document.getElementById("photo");
-    const message=document.getElementById("message");
+function nextPhoto() {
 
-    photo.src=photos[current];
+    currentPhoto++;
 
-    current++;
+    if (currentPhoto < photos.length) {
 
-    if(current<photos.length){
+        // Fade effect
+        const photo = document.getElementById("photo");
 
-        setTimeout(slideShow,2500);
+        photo.style.opacity = 0;
 
-    }
+        setTimeout(() => {
 
-    else{
+            photo.src = photos[currentPhoto];
+            photo.style.opacity = 1;
 
-        message.innerHTML="❤️ Thank you for being such an amazing friend! Happy birthday ❤️";
+        }, 300);
+
+    } else {
+
+        // Hide photo and button
+        document.getElementById("photo").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        // Birthday message
+        document.getElementById("message").innerHTML = `
+        <h2>🎉 Happy Birthday Rita! 🎂</h2>
+
+        <p style="font-size:20px; line-height:1.8; color:#444;">
+
+        Thank you for being such an amazing friend ❤️<br><br>
+
+        Every memory with you makes life happier.<br>
+        I hope today brings you lots of smiles,
+        laughter, cake, and beautiful moments.<br><br>
+
+        May all your dreams come true and may
+        this year be your best one yet! 🌸✨<br><br>
+
+        Happy Birthday once again! 🎈🎁❤️<br><br>
+
+        <b>— Mehak 💖</b>
+
+        </p>
+        `;
 
     }
 
