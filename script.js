@@ -74,7 +74,7 @@ function nextPhoto() {
 
         // Birthday message
         document.getElementById("message").innerHTML = `
-        <h2>🎉 Happy Birthday Rita! 🎂</h2>
+        <h2>🎉 Happy Birthday Riya(menchi)! 🎂</h2>
 
         <p style="font-size:20px; line-height:1.8; color:#444;">
 
