@@ -7,7 +7,13 @@ const photos = [
     "images/photo1.jpeg",
     "images/photo2.jpeg",
     "images/photo3.jpeg",
-    "images/photo4.jpeg"
+    "images/photo4.jpeg",
+    "images/photo5.jpeg",
+    "images/photo6.jpeg",
+    "images/photo7.jpeg"
+
+   
+
 ];
 
 // Shuffle photos randomly
